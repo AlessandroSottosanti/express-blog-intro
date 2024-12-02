@@ -23,6 +23,19 @@ app.get('/bacheca', (req, res) => {
     })
 });
 
+// Api di ricerca che filtra in base al parametro passato per titolo
+app.get("/ricerca", (req, res) => {
+    const title = req.query.title;
+    const titles = posts.filter((curPost) => curPost.title.toLowerCase().includes(title.toLocaleLowerCase()));
+
+    const data = {
+        posts: titles,
+        total: titles.length
+    };
+    res.json(data);
+});
+
+
 // porta in ascolto
 app.listen(port, () => {
     console.log(chalk.green.bold(`Server is listening in localhost:${port}.`));
