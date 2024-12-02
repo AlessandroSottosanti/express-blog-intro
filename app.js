@@ -5,6 +5,8 @@ import { posts } from './data/posts.js';
 const app = express();
 const port = 3000;
 
+// cartella public visibile a tutti
+app.use(express.static("public"));
 
 // default api
 app.get('/', (req, res) => {
