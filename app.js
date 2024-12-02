@@ -1,5 +1,6 @@
 import express from 'express';
 import chalk from 'chalk';
+import { posts } from './data/posts.js';
 
 const app = express();
 const port = 3000;
@@ -8,8 +9,16 @@ const port = 3000;
 // default api
 app.get('/', (req, res) => {
     res.json({
-       message: "API di test"
+       message: "Server del mio blog"
     });
+});
+
+// api per ottenere i post
+app.get('/bacheca', (req, res) => {
+    res.json({
+        posts: posts,
+        count: posts.length
+    })
 });
 
 // porta in ascolto
